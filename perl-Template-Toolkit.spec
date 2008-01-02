@@ -24,6 +24,7 @@ BuildRequires:	perl(File::Spec) >= 0.8
 BuildRequires:	perl(File::Temp) >= 0.12
 BuildRequires:	perl(Pod::POM) >= 0.1
 BuildRequires:	perl(Text::Autoformat) >= 1.03
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 Obsoletes:	perl-Template
 Provides:	perl-Template = %{version}
 
