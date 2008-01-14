@@ -5,7 +5,7 @@
 %define version 2.19
 
 %define	rel	1
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define _provides_exceptions perl(CGI)\\|perl(My::
 
