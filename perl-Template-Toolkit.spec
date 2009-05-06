@@ -2,10 +2,9 @@
 %define name	perl-%{module}
 %define	modprefix Template
 
-%define version 2.19
+%define version 2.20
 
-%define	rel	1
-%define release %mkrel 3
+%define release %mkrel 1
 
 %define _provides_exceptions perl(CGI)\\|perl(My::
 
@@ -15,7 +14,7 @@ Release: 	%{release}
 Summary: 	%{module} module for perl
 License:	GPL
 Group:		Development/Perl
-Source:		http://www.cpan.org/modules/by-module/%{modprefix}/%{module}-%{version}.tar.bz2
+Source:		http://www.cpan.org/modules/by-module/%{modprefix}/%{module}-%{version}.tar.gz
 URL:		http://www.template-toolkit.org
 Requires:	perl >= 0:5.600
 BuildRequires:	perl-devel >= 0:5.600
