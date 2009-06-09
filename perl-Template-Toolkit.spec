@@ -12,10 +12,13 @@ Name: 		%{name}
 Version: 	%{version}
 Release: 	%{release}
 Summary: 	%{module} module for perl
+
 License:	GPL
 Group:		Development/Perl
-Source:		http://www.cpan.org/modules/by-module/%{modprefix}/%{module}-%{version}.tar.gz
 URL:		http://www.template-toolkit.org
+Source0:	http://www.cpan.org/modules/by-module/%{modprefix}/%{module}-%{version}.tar.gz
+Patch0:     perl-Template-Toolkit-2.20-mdv-force-build-doc.patch
+
 Requires:	perl >= 0:5.600
 BuildRequires:	perl-devel >= 0:5.600
 BuildRequires:	perl(AppConfig) >= 1.56
@@ -37,6 +40,8 @@ LaTeX, and so on.
 
 %prep
 %setup -q -n %{module}-%{version}
+# force documentation build, don't know why it's disabled by default?
+%patch0 -p0 -b .doc
 
 # perl path hack
 find ./ -type f | xargs perl -p -i -e "s|^#\!/usr/local/bin/perl|#\!/usr/bin/perl|g"
@@ -52,7 +57,7 @@ find ./ -type f | xargs perl -p -i -e "s|^#\!/usr/local/bin/perl|#\!/usr/bin/per
     TT_EXTRAS="y" \
     TT_XS_ENABLE="y" \
     TT_XS_DEFAULT="y" \
-    TT_ACCEPT=y \
+    TT_ACCEPT=n \
     INSTALLDIRS=vendor </dev/null
 %make CFLAGS="%{optflags}"
 
