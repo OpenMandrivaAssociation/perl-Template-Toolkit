@@ -1,24 +1,15 @@
-%define module  Template-Toolkit
-%define name	perl-%{module}
-%define	modprefix Template
-
-%define version 2.20
-
-%define release %mkrel 1
-
+%define upstream_name       Template-Toolkit
+%define upstream_version    2.21
 %define _provides_exceptions perl(CGI)\\|perl(My::
 
-Name: 		%{name}
-Version: 	%{version}
-Release: 	%{release}
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
 Summary: 	%{module} module for perl
-
 License:	GPL
 Group:		Development/Perl
 URL:		http://www.template-toolkit.org
-Source0:	http://www.cpan.org/modules/by-module/%{modprefix}/%{module}-%{version}.tar.gz
-Patch0:     perl-Template-Toolkit-2.20-mdv-force-build-doc.patch
-
+Source:     http://www.cpan.org/modules/by-module/Template/%{upstream_name}-%{upstream_version}.tar.gz
 Requires:	perl >= 0:5.600
 BuildRequires:	perl-devel >= 0:5.600
 BuildRequires:	perl(AppConfig) >= 1.56
@@ -27,8 +18,6 @@ BuildRequires:	perl(File::Temp) >= 0.12
 BuildRequires:	perl(Pod::POM) >= 0.1
 BuildRequires:	perl(Text::Autoformat) >= 1.03
 BuildRoot:	%{_tmppath}/%{name}-%{version}
-Obsoletes:	perl-Template
-Provides:	perl-Template = %{version}
 
 %description
 The Template Toolkit is a collection of modules which implement a
@@ -39,43 +28,22 @@ any other kind of text based documents: HTML, XML, POD, PostScript,
 LaTeX, and so on.
 
 %prep
-%setup -q -n %{module}-%{version}
-# force documentation build, don't know why it's disabled by default?
-%patch0 -p0 -b .doc
+%setup -q -n %{upstream_name}-%{upstream_version} 
 
 # perl path hack
-find ./ -type f | xargs perl -p -i -e "s|^#\!/usr/local/bin/perl|#\!/usr/bin/perl|g"
+find ./ -type f | \
+    xargs perl -pi -e 's|^#\!/usr/local/bin/perl|#\!/usr/bin/perl|'
 
 %build
 %{__perl} Makefile.PL \
-    TT_PREFIX=%{_datadir}/tt2 \
-    TT_IMAGES=%{_datadir}/tt2/images \
-    TT_DOCS="y" \
-    TT_SPLASH="y" \
-    TT_THEME="aqua" \
-    TT_EXAMPLES="y" \
-    TT_EXTRAS="y" \
     TT_XS_ENABLE="y" \
     TT_XS_DEFAULT="y" \
-    TT_ACCEPT=n \
     INSTALLDIRS=vendor </dev/null
 %make CFLAGS="%{optflags}"
 
 %install
 rm -rf %{buildroot} 
-
-# ==> ugly hack, begin
-find ./ -name "ttree.cfg" | xargs perl -p -i -e "s|%{_datadir}|%{buildroot}%{_datadir}|g"
-
-make install DESTDIR=%{buildroot} \
-    PREFIX=%{buildroot}%{_prefix} \
-    TT_PREFIX="%{buildroot}%{_datadir}/tt2"
-
-find %{buildroot}%{_datadir}/tt2 -name "ttree.cfg" | xargs perl -p -i -e "s|%{buildroot}%{_datadir}|%{_datadir}|g"
-# <== ugly hack, end
-
-# maybe the "%{_datadir}/tt2/docs" and "%{_datadir}/tt2/examples" directories
-# should be moved to the docdir?
+%makeinstall_std
 
 %clean
 rm -rf %{buildroot} 
@@ -83,10 +51,7 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %doc README Changes TODO HACKING INSTALL
-%{perl_vendorarch}/%{modprefix}*
-%{perl_vendorarch}/auto/%{modprefix}
+%{perl_vendorarch}/Template*
+%{perl_vendorarch}/auto/Template
 %{_mandir}/*/*
-%{_datadir}/tt2
 %{_bindir}/*
-
-
