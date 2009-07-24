@@ -1,16 +1,17 @@
 %define upstream_name       Template-Toolkit
-%define upstream_version    2.21
+%define upstream_version    2.22
 %define _provides_exceptions perl(CGI)\\|perl(My::
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
 Release:    %mkrel 1
+
 Summary: 	%{module} module for perl
 License:	GPL
 Group:		Development/Perl
 URL:		http://www.template-toolkit.org
-Source:     http://www.cpan.org/modules/by-module/Template/%{upstream_name}-%{upstream_version}.tar.gz
-Requires:	perl >= 0:5.600
+Source0:    http://www.cpan.org/modules/by-module/Template/%{upstream_name}-%{upstream_version}.tar.gz
+
 BuildRequires:	perl-devel >= 0:5.600
 BuildRequires:	perl(AppConfig) >= 1.56
 BuildRequires:	perl(File::Spec) >= 0.8
@@ -18,6 +19,7 @@ BuildRequires:	perl(File::Temp) >= 0.12
 BuildRequires:	perl(Pod::POM) >= 0.1
 BuildRequires:	perl(Text::Autoformat) >= 1.03
 BuildRoot:	%{_tmppath}/%{name}-%{version}
+Requires:	perl >= 0:5.600
 
 %description
 The Template Toolkit is a collection of modules which implement a
