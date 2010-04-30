@@ -4,9 +4,9 @@
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 1
+Release:    %mkrel 2
 
-Summary: 	%{module} module for perl
+Summary: 	%{upstream_name} module for perl
 License:	GPL
 Group:		Development/Perl
 URL:		http://www.template-toolkit.org
