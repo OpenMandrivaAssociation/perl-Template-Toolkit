@@ -1,16 +1,16 @@
-%define upstream_name       Template-Toolkit
-%define upstream_version    2.22
-%define _provides_exceptions perl(CGI)\\|perl(My::
+%define	modname	Template-Toolkit
+%define	modver	2.22
+%define	_provides_exceptions perl(CGI)\\|perl(My::
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 7
+Name:		perl-%{modname}
+Version:	%{perl_convert_version %{modver}}
+Release:	8
 
-Summary: 	%{upstream_name} module for perl
+Summary:	%{modname} module for perl
 License:	GPL
 Group:		Development/Perl
 URL:		http://www.template-toolkit.org
-Source0:    http://www.cpan.org/modules/by-module/Template/%{upstream_name}-%{upstream_version}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/Template/%{modname}-%{modver}.tar.gz
 
 BuildRequires:	perl-devel >= 0:5.600
 BuildRequires:	perl(AppConfig) >= 1.56
@@ -18,8 +18,6 @@ BuildRequires:	perl(File::Spec) >= 0.8
 BuildRequires:	perl(File::Temp) >= 0.12
 BuildRequires:	perl(Pod::POM) >= 0.1
 BuildRequires:	perl(Text::Autoformat) >= 1.03
-BuildRoot:	%{_tmppath}/%{name}-%{version}
-Requires:	perl >= 0:5.600
 
 %description
 The Template Toolkit is a collection of modules which implement a
@@ -30,36 +28,33 @@ any other kind of text based documents: HTML, XML, POD, PostScript,
 LaTeX, and so on.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version} 
+%setup -q -n %{modname}-%{modver} 
 
 # perl path hack
 find ./ -type f | \
     xargs perl -pi -e 's|^#\!/usr/local/bin/perl|#\!/usr/bin/perl|'
 
 %build
-%{__perl} Makefile.PL \
+perl Makefile.PL \
     TT_XS_ENABLE="y" \
     TT_XS_DEFAULT="y" \
     INSTALLDIRS=vendor </dev/null
 %make CFLAGS="%{optflags}"
 
 %install
-rm -rf %{buildroot} 
 %makeinstall_std
 
-%clean
-rm -rf %{buildroot} 
-
 %files
-%defattr(-,root,root)
-%doc README Changes TODO HACKING INSTALL
+%doc README Changes TODO HACKING
 %{perl_vendorarch}/Template*
 %{perl_vendorarch}/auto/Template
 %{_mandir}/*/*
 %{_bindir}/*
 
-
 %changelog
+* Fri Dec 21 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 2.220.0-8
+- cleanups
+
 * Sun Jan 22 2012 Oden Eriksson <oeriksson@mandriva.com> 2.220.0-7mdv2012.0
 + Revision: 765670
 - rebuilt for perl-5.14.2
