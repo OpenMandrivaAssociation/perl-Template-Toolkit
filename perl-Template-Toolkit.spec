@@ -1,6 +1,6 @@
 %define	modname	Template-Toolkit
 %define	modver	2.22
-%define	_provides_exceptions perl(CGI)\\|perl(My::
+%define	__noautoreq 'perl\\(CGI\\)'
 
 Name:		perl-%{modname}
 Version:	%{perl_convert_version %{modver}}
@@ -53,6 +53,7 @@ perl Makefile.PL \
 
 %changelog
 * Fri Dec 21 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 2.220.0-8
+- update dependency filter to use internal dependency generator
 - cleanups
 
 * Sun Jan 22 2012 Oden Eriksson <oeriksson@mandriva.com> 2.220.0-7mdv2012.0
