@@ -5,7 +5,7 @@
 Summary:	%{modname} module for perl
 Name:		perl-%{modname}
 Version:	%{perl_convert_version %{modver}}
-Release:	10
+Release:	11
 License:	GPLv2
 Group:		Development/Perl
 Url:		http://www.template-toolkit.org
