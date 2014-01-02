@@ -1,2 +1,4 @@
+removed_sources:
+  Template-Toolkit-2.22.tar.gz: 5e553cdb97a594e0d81c5bd7c9b5664f963ffa4f
 sources:
-  "Template-Toolkit-2.22.tar.gz": 5e553cdb97a594e0d81c5bd7c9b5664f963ffa4f
+  Template-Toolkit-2.25.tar.gz: e8e095a8b03d99187ad5b11f6175ac0806bc674e

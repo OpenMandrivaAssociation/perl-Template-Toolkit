@@ -1,15 +1,15 @@
 %define	modname	Template-Toolkit
-%define	modver	2.22
+%define modver 2.25
 %define	__noautoreq 'perl\\(CGI\\)'
 
 Summary:	%{modname} module for perl
 Name:		perl-%{modname}
-Version:	%{perl_convert_version %{modver}}
-Release:	12
+Version:	%perl_convert_version %{modver}
+Release:	1
 License:	GPLv2
 Group:		Development/Perl
 Url:		http://www.template-toolkit.org
-Source0:	http://www.cpan.org/modules/by-module/Template/%{modname}-%{modver}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/Template/Template-Toolkit-%{modver}.tar.gz
 BuildRequires:	perl-devel >= 0:5.600
 BuildRequires:	perl(AppConfig) >= 1.56
 BuildRequires:	perl(File::Spec) >= 0.8
@@ -49,4 +49,5 @@ perl Makefile.PL \
 %{perl_vendorarch}/auto/Template
 %{_mandir}/man1/*
 %{_mandir}/man3/*
+
 
