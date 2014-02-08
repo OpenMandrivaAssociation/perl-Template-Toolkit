@@ -4,7 +4,7 @@
 
 Name:		perl-%{modname}
 Version:	%{perl_convert_version %{modver}}
-Release:	8
+Release:	9
 
 Summary:	%{modname} module for perl
 License:	GPL
