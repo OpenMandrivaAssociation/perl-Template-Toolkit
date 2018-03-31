@@ -1,11 +1,11 @@
 %define	modname	Template-Toolkit
-%define modver 2.26
+%define modver 2.27
 %define	__noautoreq 'perl\\(CGI\\)'
 
 Summary:	%{modname} module for perl
 Name:		perl-%{modname}
 Version:	%perl_convert_version %{modver}
-Release:	5
+Release:	1
 License:	GPLv2
 Group:		Development/Perl
 Url:		http://www.template-toolkit.org
