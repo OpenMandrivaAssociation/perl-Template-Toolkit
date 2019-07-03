@@ -1,5 +1,5 @@
 %define	modname	Template-Toolkit
-%define modver 2.28
+%define modver 2.29
 %define	__noautoreq 'perl\\(CGI\\)'
 
 Summary:	%{modname} module for perl
@@ -37,10 +37,10 @@ perl Makefile.PL \
 	TT_XS_ENABLE="y" \
 	TT_XS_DEFAULT="y" \
 	INSTALLDIRS=vendor </dev/null
-%make CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 %install
-%makeinstall_std
+%make_install
 
 %files
 %doc README Changes TODO HACKING
