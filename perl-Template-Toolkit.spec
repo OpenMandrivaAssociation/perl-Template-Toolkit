@@ -1,5 +1,5 @@
 %define	modname	Template-Toolkit
-%define modver 2.29
+%define modver 3.008
 %define	__noautoreq 'perl\\(CGI\\)'
 
 Summary:	%{modname} module for perl
@@ -43,7 +43,7 @@ perl Makefile.PL \
 %make_install
 
 %files
-%doc README Changes TODO HACKING
+%doc Changes TODO HACKING
 %{_bindir}/*
 %{perl_vendorarch}/Template*
 %{perl_vendorarch}/auto/Template
