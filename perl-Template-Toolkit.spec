@@ -1,6 +1,10 @@
 %define	modname	Template-Toolkit
 %define modver 3.100
 %define	__noautoreq 'perl\\(CGI\\)'
+%ifarch %{x86_64}
+# FIXME bug workaround
+%global _debugsource_template %{nil}
+%endif
 
 Summary:	%{modname} module for perl
 Name:		perl-%{modname}
