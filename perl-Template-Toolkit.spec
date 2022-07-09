@@ -1,5 +1,5 @@
 %define	modname	Template-Toolkit
-%define modver 3.009
+%define modver 3.100
 %define	__noautoreq 'perl\\(CGI\\)'
 
 Summary:	%{modname} module for perl
