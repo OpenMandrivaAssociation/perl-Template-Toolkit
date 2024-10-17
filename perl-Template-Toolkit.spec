@@ -12,7 +12,7 @@ Version:	%perl_convert_version %{modver}
 Release:	2
 License:	GPLv2
 Group:		Development/Perl
-Url:		http://www.template-toolkit.org
+Url:		https://www.template-toolkit.org
 Source0:	http://www.cpan.org/modules/by-module/Template/%{modname}-%{modver}.tar.gz
 BuildRequires:	perl-devel >= 0:5.600
 BuildRequires:	perl(AppConfig) >= 1.56
