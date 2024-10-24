@@ -1,25 +1,20 @@
 %define	modname	Template-Toolkit
-%define modver 3.100
 %define	__noautoreq 'perl\\(CGI\\)'
-%ifarch %{x86_64}
-# FIXME bug workaround
-%global _debugsource_template %{nil}
-%endif
 
 Summary:	%{modname} module for perl
 Name:		perl-%{modname}
-Version:	%perl_convert_version %{modver}
-Release:	3
+Version:	3.102
+Release:	1
 License:	GPLv2
 Group:		Development/Perl
 Url:		https://www.template-toolkit.org
-Source0:	http://www.cpan.org/modules/by-module/Template/%{modname}-%{modver}.tar.gz
-BuildRequires:	perl-devel >= 0:5.600
-BuildRequires:	perl(AppConfig) >= 1.56
-BuildRequires:	perl(File::Spec) >= 0.8
-BuildRequires:	perl(File::Temp) >= 0.12
-BuildRequires:	perl(Pod::POM) >= 0.1
-BuildRequires:	perl(Text::Autoformat) >= 1.03
+Source0:	http://www.cpan.org/modules/by-module/Template/%{modname}-%{version}.tar.gz
+BuildRequires:	perl-devel
+BuildRequires:	perl(AppConfig)
+BuildRequires:	perl(File::Spec)
+BuildRequires:	perl(File::Temp)
+BuildRequires:	perl(Pod::POM)
+BuildRequires:	perl(Text::Autoformat)
 
 %description
 The Template Toolkit is a collection of modules which implement a
@@ -30,7 +25,7 @@ any other kind of text based documents: HTML, XML, POD, PostScript,
 LaTeX, and so on.
 
 %prep
-%setup -qn %{modname}-%{modver} 
+%autosetup -p1 -n %{modname}-%{version} 
 
 # perl path hack
 find ./ -type f | \
@@ -47,7 +42,7 @@ perl Makefile.PL \
 %make_install
 
 %files
-%doc Changes TODO HACKING
+%doc Changes TODO
 %{_bindir}/*
 %{perl_vendorarch}/Template*
 %{perl_vendorarch}/auto/Template
