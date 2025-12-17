@@ -4,7 +4,7 @@
 Summary:	%{modname} module for perl
 Name:		perl-%{modname}
 Version:	3.102
-Release:	1
+Release:	2
 License:	GPLv2
 Group:		Development/Perl
 Url:		https://www.template-toolkit.org
