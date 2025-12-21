@@ -9,6 +9,7 @@ License:	GPLv2
 Group:		Development/Perl
 Url:		https://www.template-toolkit.org
 Source0:	http://www.cpan.org/modules/by-module/Template/%{modname}-%{version}.tar.gz
+BuildRequires:	make
 BuildRequires:	perl-devel
 BuildRequires:	perl(AppConfig)
 BuildRequires:	perl(File::Spec)
