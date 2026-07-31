@@ -3,8 +3,8 @@
 
 Summary:	%{modname} module for perl
 Name:		perl-%{modname}
-Version:	3.102
-Release:	3
+Version:	3.106
+Release:	1
 License:	GPLv2
 Group:		Development/Perl
 Url:		https://www.template-toolkit.org
@@ -26,7 +26,7 @@ any other kind of text based documents: HTML, XML, POD, PostScript,
 LaTeX, and so on.
 
 %prep
-%autosetup -p1 -n %{modname}-%{version} 
+%autosetup -p1 -n Template-Toolkit-3.106 
 
 # perl path hack
 find ./ -type f | \
